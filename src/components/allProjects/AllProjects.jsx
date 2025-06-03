@@ -46,7 +46,7 @@ const AllProjects = () => {
       year: '2023',
       project: 'Meeting Room Booking System',
       technologies: ['Java', 'SQL', 'HTML/XML', 'CSS', 'MVC Framework'],
-      link: 'https://github.com/AishlyManglani?tab=stars'
+      link: 'https://github.com/AishlyManglani/meeting-room-booking-system'
     },
     // {
     //   year: '2023',

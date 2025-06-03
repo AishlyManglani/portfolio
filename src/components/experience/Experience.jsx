@@ -2,7 +2,7 @@ import React from 'react';
 import ExperienceItem from '../ExperienceItem/ExperienceItem';
 import TechTags from '../TechTags/TechTags';
 import { FiDownload } from 'react-icons/fi';
-import resumePDF from '../../assets/AISHLY MANGLANI_ RESUME.pdf';
+import resumePDF from '../../assets/resume.pdf';
 import './Experience.css';
 import ciscoImg from '../../assets/images/cisco.jpeg'
 
