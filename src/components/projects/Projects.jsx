@@ -36,6 +36,7 @@ const Projects = () => {
       title: 'Meeting Room Booking System',
       description: 'Developed a full-stack web application for managing room reservations using Java, enabling CRUD functionality and improving efficiency for room allocation at work places. • Implemented a secure authentication system and ensured smooth user experience by using RESTful APIs.',
       technologies: ['Java', 'SQL', 'HTML/XML', 'CSS', 'MVC Framework'],
+      link: 'https://github.com/AishlyManglani/meeting-room-booking-system'
 
     },
     // {
