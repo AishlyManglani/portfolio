@@ -1,0 +1,58 @@
+:root {
+  /* Theme colors - Dark */
+  --dark-bg: #0a192f;
+  --dark-bg-light: #112240;
+  --dark-bg-hover: rgba(17, 34, 64, 0.6);
+  --dark-text-primary: #ffffff;
+  --dark-text-secondary: #e3e9ed;
+  --dark-text-tertiary: #8b9296;
+  --dark-text-nav: #8b9296;
+  --dark-accent: #00f2ff;
+  --dark-accent-hover: rgba(0, 242, 255, 0.8);
+  --dark-accent-bg: rgba(0, 242, 255, 0.1);
+  --dark-shadow: rgba(0, 0, 0, 0.3);
+
+  /* Theme colors - Light */
+  --light-bg: #f8fafc;
+  --light-bg-light: #eef2f7;
+  --light-bg-hover: rgba(238, 242, 247, 0.6);
+  --light-text-primary: #1a202c;
+  --light-text-secondary: #2d3748;
+  --light-text-tertiary: #4a5568;
+  --light-text-nav: #4a5568;
+  --light-accent: #3b82f6;
+  --light-accent-hover: rgba(59, 130, 246, 0.8);
+  --light-accent-bg: rgba(59, 130, 246, 0.1);
+  --light-shadow: rgba(0, 0, 0, 0.05);
+
+  /* Default theme (dark) */
+  --color-bg: var(--dark-bg);
+  --color-bg-light: var(--dark-bg-light);
+  --color-bg-hover: var(--dark-bg-hover);
+  --color-text-primary: var(--dark-text-primary);
+  --color-text-secondary: var(--dark-text-secondary);
+  --color-text-tertiary: var(--dark-text-tertiary);
+  --color-text-nav: var(--dark-text-nav);
+  --color-accent: var(--dark-accent);
+  --color-accent-hover: var(--dark-accent-hover);
+  --color-accent-bg: var(--dark-accent-bg);
+  --color-shadow: var(--dark-shadow);
+  
+  /* Transparent colors */
+  --color-white-50: rgba(255, 255, 255, 0.5);
+  --color-white-80: rgba(255, 255, 255, 0.8);
+}
+
+[data-theme='light'] {
+  --color-bg: var(--light-bg);
+  --color-bg-light: var(--light-bg-light);
+  --color-bg-hover: var(--light-bg-hover);
+  --color-text-primary: var(--light-text-primary);
+  --color-text-secondary: var(--light-text-secondary);
+  --color-text-tertiary: var(--light-text-tertiary);
+  --color-text-nav: var(--light-text-nav);
+  --color-accent: var(--light-accent);
+  --color-accent-hover: var(--light-accent-hover);
+  --color-accent-bg: var(--light-accent-bg);
+  --color-shadow: var(--light-shadow);
+} 

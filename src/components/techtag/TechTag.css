@@ -1,0 +1,16 @@
+.tech-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  background-color: var(--color-accent-bg);
+  color: var(--color-accent);
+  transition: all 0.2s ease;
+}
+
+.tech-tag:hover {
+  background-color: var(--color-accent-bg-hover);
+  transform: translateY(-1px);
+} 

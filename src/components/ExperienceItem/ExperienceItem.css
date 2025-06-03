@@ -1,0 +1,40 @@
+.experience-item {
+  position: relative;
+  padding: 24px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  border-left: 2px solid transparent;
+  margin-bottom: 8px;
+}
+
+.experience-item:hover {
+  background-color: var(--color-bg-hover);
+  border-left-color: var(--color-accent);
+}
+
+.experience-item-highlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
+
+.experience-item:hover .experience-item-highlight {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+@media (max-width: 768px) {
+  .experience-item {
+    padding: 20px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .experience-item {
+    padding: 16px 0;
+  }
+} 
