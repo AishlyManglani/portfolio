@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FiMail } from 'react-icons/fi';
 import './Sidebar.css';
 
 const Sidebar = ({ closeMobileMenu, hideBasicInfoOnMobile }) => {
@@ -7,9 +8,7 @@ const Sidebar = ({ closeMobileMenu, hideBasicInfoOnMobile }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['about', 'experience', 'projects'
-        // , 'blog'
-      ];
+      const sections = ['about', 'experience', 'projects', 'skills'];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -32,9 +31,7 @@ const Sidebar = ({ closeMobileMenu, hideBasicInfoOnMobile }) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
-      if (closeMobileMenu) {
-        closeMobileMenu();
-      }
+      if (closeMobileMenu) closeMobileMenu();
     }
   };
 
@@ -43,9 +40,12 @@ const Sidebar = ({ closeMobileMenu, hideBasicInfoOnMobile }) => {
       {!hideBasicInfoOnMobile && (
         <div className="sidebar-content">
           <div className="sidebar-header">
-            <h1>Aishly Manglani</h1>
-            <h2>Master's Student</h2>
-            <p>I create cutting-edge solutions that enhance web and mobile digital experiences.</p>
+            <p className="sidebar-greeting">Hi, my name is</p>
+            <h1 className="sidebar-name">Aishly Manglani.</h1>
+            <h2 className="sidebar-title">I build things for the web.</h2>
+            <p className="sidebar-tagline">
+              Full-Stack Software Engineer with experience at Cisco Systems. I craft production-ready React frontends, RESTful APIs, and cloud-deployed applications.
+            </p>
           </div>
 
           <div className="social-links">
@@ -55,40 +55,35 @@ const Sidebar = ({ closeMobileMenu, hideBasicInfoOnMobile }) => {
             <a href="https://www.linkedin.com/in/aishly-manglani/" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="LinkedIn">
               <FaLinkedin className="social-icon" />
             </a>
+            <a href="mailto:aishlymanglani@gmail.com" className="social-link" aria-label="Email">
+              <FiMail className="social-icon" />
+            </a>
+          </div>
+
+          <div className="status-badge">
+            <span className="status-dot" />
+            Open to opportunities
           </div>
         </div>
       )}
 
       <nav className={`sidebar-nav ${hideBasicInfoOnMobile ? 'mobile-nav-only' : ''}`}>
         <ul>
-          <li
-            className={`nav-item ${activeSection === 'about' ? 'active' : ''}`}
-            onClick={() => handleNavClick('about')}
-          >
-            <div className="nav-line"></div>
-            ABOUT
-          </li>
-          <li
-            className={`nav-item ${activeSection === 'experience' ? 'active' : ''}`}
-            onClick={() => handleNavClick('experience')}
-          >
-            <div className="nav-line"></div>
-            EXPERIENCE
-          </li>
-          <li
-            className={`nav-item ${activeSection === 'projects' ? 'active' : ''}`}
-            onClick={() => handleNavClick('projects')}
-          >
-            <div className="nav-line"></div>
-            PROJECTS
-          </li>
-          {/* <li 
-            className={`nav-item ${activeSection === 'blog' ? 'active' : ''}`}
-            onClick={() => handleNavClick('blog')}
-          >
-            <div className="nav-line"></div>
-            BLOGS
-          </li> */}
+          {[
+            { id: 'about', label: 'About' },
+            { id: 'experience', label: 'Experience' },
+            { id: 'projects', label: 'Projects' },
+            { id: 'skills', label: 'Skills' },
+          ].map(({ id, label }) => (
+            <li
+              key={id}
+              className={`nav-item ${activeSection === id ? 'active' : ''}`}
+              onClick={() => handleNavClick(id)}
+            >
+              <div className="nav-line" />
+              {label.toUpperCase()}
+            </li>
+          ))}
         </ul>
       </nav>
     </div>

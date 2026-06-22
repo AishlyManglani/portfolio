@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import About from '../about/About';
 import Projects from '../projects/Projects';
 import Experience from '../experience/Experience';
-import Blog from '../Blog/Blog';
+import Skills from '../Skills/Skills';
 import Sidebar from '../sidebar/Sidebar';
 import ThemeToggle from '../ThemeToggle/ThemeToggle';
 import { FiMenu, FiX } from 'react-icons/fi';
@@ -14,6 +14,7 @@ const Home = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [menuAnimationClass, setMenuAnimationClass] = useState('');
+  const mainContentRef = useRef(null);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -22,10 +23,7 @@ const Home = () => {
 
     checkMobile();
     window.addEventListener('resize', checkMobile);
-
-    return () => {
-      window.removeEventListener('resize', checkMobile);
-    };
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   useEffect(() => {
@@ -38,48 +36,56 @@ const Home = () => {
     }
   }, [isMobileMenuOpen]);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    const sections = document.querySelectorAll('.fade-in-section');
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, []);
+
   const handleMouseMove = (e) => {
-    setMousePosition({
-      x: e.clientX,
-      y: e.clientY
-    });
+    setMousePosition({ x: e.clientX, y: e.clientY });
   };
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
+  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
   const closeMobileMenu = () => {
-    if (isMobile) {
-      setIsMobileMenuOpen(false);
-    }
+    if (isMobile) setIsMobileMenuOpen(false);
   };
 
   return (
-    <div
-      className="home-container"
-      onMouseMove={handleMouseMove}
-    >
+    <div className="home-container" onMouseMove={handleMouseMove}>
+      <div className="bg-grid" aria-hidden="true" />
       <ThemeToggle />
 
       <div
         className="spotlight-effect"
         style={{
-          background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(100,150,255,0.05), transparent 40%)`
+          background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, var(--color-spotlight), transparent 40%)`,
         }}
       />
 
       {isMobile && (
         <div className="mobile-header-info">
+          <p className="mobile-greeting">Hi, I'm</p>
           <h1>Aishly Manglani</h1>
-          <h2>Master's Student</h2>
-          <p>I build innovative solutions and optimize digital experiences across web and mobile platforms.</p>
+          <h2>Full-Stack Software Engineer</h2>
+          <p>I build production-ready web applications, intelligent ML pipelines, and scalable cloud deployments.</p>
           <div className="mobile-social-links">
             <a href="https://github.com/AishlyManglani" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
               <FaGithub />
             </a>
-            <a href="https://www.linkedin.com/in/aishly-manglani/
-" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/in/aishly-manglani/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
               <FaLinkedin />
             </a>
           </div>
@@ -100,23 +106,48 @@ const Home = () => {
         </div>
       )}
 
-      <div className="main-content">
+      <div className="main-content" ref={mainContentRef}>
         <div className="content-wrapper">
-          <section className="content-section" id="about">
-            <h2 className="section-heading">About</h2>
+          <section className="content-section fade-in-section" id="about">
+            <div className="section-header">
+              <span className="section-number">01.</span>
+              <h2 className="section-heading">About</h2>
+              <div className="section-line" />
+            </div>
             <About />
           </section>
 
-          <section className="content-section" id="experience">
-            <h2 className="section-heading">Experience</h2>
+          <section className="content-section fade-in-section" id="experience">
+            <div className="section-header">
+              <span className="section-number">02.</span>
+              <h2 className="section-heading">Experience</h2>
+              <div className="section-line" />
+            </div>
             <Experience />
           </section>
 
-          <section className="content-section" id="projects">
-            <h2 className="section-heading">Projects</h2>
+          <section className="content-section fade-in-section" id="projects">
+            <div className="section-header">
+              <span className="section-number">03.</span>
+              <h2 className="section-heading">Projects</h2>
+              <div className="section-line" />
+            </div>
             <Projects />
           </section>
+
+          <section className="content-section fade-in-section" id="skills">
+            <div className="section-header">
+              <span className="section-number">04.</span>
+              <h2 className="section-heading">Skills</h2>
+              <div className="section-line" />
+            </div>
+            <Skills />
+          </section>
         </div>
+
+        <footer className="site-footer fade-in-section">
+          <p>Built with React · Designed & developed by Aishly Manglani</p>
+        </footer>
       </div>
     </div>
   );

@@ -2,82 +2,120 @@
   max-width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  margin-top: -20px;
-  padding-left: 0;
-}
-
-.section-title {
-  font-size: 48px;
-  font-weight: 600;
-  color: var(--color-text-secondary);
+  gap: 8px;
 }
 
 .about-desc {
   color: var(--color-text-tertiary);
-  margin-bottom: 20px;
-  line-height: 1.6;
+  margin-bottom: 16px;
+  line-height: 1.75;
   font-size: 16px;
-  padding-left: 0;
 }
 
 .about-desc:last-child {
   margin-bottom: 0;
 }
 
-.about-content {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  color: var(--color-text-tertiary);
-  font-size: 16px;
-  line-height: 1.7;
-}
-
-.main-desc,
-.current-work,
-.experience-desc,
 .personal-note {
-  margin: 0;
+  margin-top: 8px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-border);
 }
 
 .highlight {
   color: var(--color-accent);
-  font-weight: 400;
+  font-weight: 500;
 }
 
-a.highlight:hover {
+.about-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 24px 0 8px;
+}
+
+.about-card {
+  padding: 20px;
+  border-radius: 12px;
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  transition: all 0.3s ease;
+}
+
+.about-card:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+.about-card-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
   color: var(--color-accent);
-  opacity: 0.8;
+  display: block;
+  margin-bottom: 12px;
 }
 
-.about-content p {
-  font-weight: 300;
+.about-card h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin-bottom: 4px;
+}
+
+.about-card p {
+  font-size: 13px;
+  color: var(--color-text-tertiary);
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.about-card p:last-child {
+  margin-bottom: 0;
+}
+
+.about-cert-list {
+  list-style: none;
+  padding: 0;
+}
+
+.about-cert-list li {
+  font-size: 14px;
+  color: var(--color-text-tertiary);
+  padding: 6px 0;
+  padding-left: 16px;
+  position: relative;
+  line-height: 1.5;
+}
+
+.about-cert-list li::before {
+  content: '▹';
+  position: absolute;
+  left: 0;
+  color: var(--color-accent);
+  font-size: 12px;
 }
 
 @media (max-width: 768px) {
-  .about-section {
-    padding: 0;
+  .about-cards {
+    grid-template-columns: 1fr;
   }
-  
+
   .about-desc {
-    margin-bottom: 16px;
-    line-height: 1.5;
-    padding: 0;
-    margin-left: 0;
+    margin-bottom: 14px;
+    line-height: 1.65;
+    font-size: 15px;
   }
 }
 
 @media (max-width: 480px) {
-  .about-section {
-    padding: 0;
-  }
-  
   .about-desc {
-    font-size: 15px;
-    margin-bottom: 14px;
-    line-height: 1.4;
-    margin-left: 0;
-    padding-left: 0;
+    font-size: 14px;
+  }
+
+  .about-card {
+    padding: 16px;
   }
 }

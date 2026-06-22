@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
 @import './styles/colors.css';
 
 * {
@@ -13,13 +13,13 @@
 
 :root {
   --transition: all 400ms ease;
-  --container-widht-lg: 75%;
-  --container-widht-md: 86%;
-  --container-widht-sm: 90%;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
 }
 
 html {
   scroll-behavior: smooth;
+  scrollbar-width: none;
 }
 
 ::-webkit-scrollbar {
@@ -27,46 +27,22 @@ html {
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-sans);
   background: var(--color-bg);
   color: var(--color-text-primary);
   line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.container {
-  width: var(--container-widht-lg);
-  margin: 0 auto;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5 {
-  font-weight: 500;
-}
-
-h1 {
-  font-size: 2.5rem;
-}
-
-section {
-  margin-top: 8rem;
-}
-
-section > h2,
-section > h5 {
-  text-align: center;
-  color: var(--color-text-tertiary);
-}
-
-section > h2 {
+::selection {
+  background: var(--color-accent-bg);
   color: var(--color-accent);
-  margin-bottom: 3rem;
 }
 
-.text-light {
-  color: var(--color-text-tertiary);
+h1, h2, h3, h4, h5 {
+  font-weight: 600;
+  line-height: 1.2;
 }
 
 a {
@@ -78,48 +54,19 @@ a:hover {
   color: var(--color-accent-hover);
 }
 
-.btn {
-  width: max-content;
-  display: inline-block;
-  color: var(--color-accent);
-  padding: 0.75rem 1.2rem;
-  border-radius: 0.4rem;
-  cursor: pointer;
-  border: 1px solid var(--color-accent);
-  transition: var(--transition);
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.btn:hover {
-  background: var(--color-accent);
-  color: var(--color-bg);
-  border-color: transparent;
-}
-
-.btn-primary {
-  background: var(--color-accent);
-  color: var(--color-bg);
-}
-
-img {
-  display: block;
-  width: 100%;
-  object-fit: cover;
-}
-
-@media screen and (max-width: 1024px) {
-  .container {
-    width: var(--container-width-md);
-  }
-  section {
-    margin-top: 6rem;
-  }
+.fade-in-section.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 @media screen and (max-width: 600px) {
-  .container {
-    width: var(--container-width-sm);
-  }
-  section > h2 {
-    margin-bottom: 2rem;
+  body {
+    font-size: 15px;
   }
 }

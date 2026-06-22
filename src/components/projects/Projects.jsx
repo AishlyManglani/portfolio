@@ -4,56 +4,37 @@ import { Link } from 'react-router-dom';
 import TechTags from '../TechTags/TechTags';
 import './Projects.css';
 
-// import taranaImg from '../../assets/images/tarana.png';
-// import edukopImg from '../../assets/images/edukop.png';
-// import kutubeeImg from '../../assets/images/kutubee.png';
-// import nyceImg from '../../assets/images/nyce.png';
-
 const Projects = () => {
-  // Using inline base64 images for simplicity
-  // const auctionImg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='120' viewBox='0 0 180 120' fill='none'%3E%3Crect width='180' height='120' fill='%230a192f'/%3E%3Cpath d='M60 80 L90 40 L120 80' stroke='%2364ffda' stroke-width='2' fill='none'/%3E%3Ccircle cx='90' cy='60' r='25' stroke='%2364ffda' stroke-width='2' fill='none'/%3E%3C/svg%3E";
-
-  // const busImg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='120' viewBox='0 0 180 120' fill='none'%3E%3Crect width='180' height='120' fill='%230a192f'/%3E%3Crect x='40' y='40' width='100' height='50' rx='10' stroke='%2364ffda' stroke-width='2'/%3E%3Ccircle cx='60' cy='90' r='8' stroke='%2364ffda' stroke-width='2'/%3E%3Ccircle cx='120' cy='90' r='8' stroke='%2364ffda' stroke-width='2'/%3E%3C/svg%3E";
-
   const featuredProjects = [
     {
+      year: '2026',
+      title: 'AI Code Reviewer',
+      description: 'LLM-powered VS Code extension integrating live repository context and version-control APIs to analyze code diffs, detect logical defects, and generate structured feedback — reducing pull request review time in internal testing.',
+      technologies: ['Python', 'JavaScript', 'LLM Integration', 'REST APIs', 'Git'],
+      link: 'https://github.com/mannnada/AI-CodeReviewer/tree/main/AI-CodeReviewer',
+      highlight: true,
+    },
+    {
       year: '2025',
-      title: 'Fashion recommendation system',
-      description: 'Developed and deployed a hybrid fashion recommendation engine combining collaborative filtering (SVD), content-based filtering, and CNN-driven visual similarity, achieving 85 percent accuracy and robust cold-start handling (75 percent). • Engineered a modular ML pipeline with FastAPI, MLflow, and automated retraining, enabling real-time recommendations with sub-100ms response times and dynamic ensemble weighting. • Boosted user engagement by 40 percent in A/B testing through optimized feature fusion (text, image, metadata) and personalized scoring strategies deployed via scalable API services.',
-      technologies: ['Python', 'Tensorflow', 'OpenCV', 'FastAPI', 'MLflow'],
-      link: 'https://github.com/riship1999/StyloAI_Deep_Learning'
+      title: 'Fashion Recommender System',
+      description: 'Hybrid recommendation engine combining collaborative filtering with CNN visual embeddings, improving accuracy by 18% over baseline. Deployed real-time inference via FastAPI in Docker with MLflow experiment tracking.',
+      technologies: ['Python', 'TensorFlow', 'FastAPI', 'Docker', 'MLflow'],
+      link: 'https://github.com/riship1999/StyloAI_Deep_Learning',
     },
     {
       year: '2025',
       title: 'BookTable',
-      description: 'Built a role based restaurant reservation system for searching, booking, and managing restaurant reservations. • Designed RESTful APIs with JSON I/O, input validation, and error handling; integrated Google Maps. • Deployed backend and database to AWS EC2 with Load Balancer, ensuring high availability.',
-      technologies: ['Python(FastAPI) ', 'AWS EC2', 'RESTful APIs', 'SQLite', 'Git', 'Scrum'],
-      link: 'https://github.com/gopinathsjsu/team-project-2024849-mindbogglers'
-
+      description: 'Full-stack restaurant booking platform on AWS EC2 with role-based access control and concurrent authenticated sessions. Automated CI/CD with GitHub Actions enabling zero-downtime deployments.',
+      technologies: ['React', 'FastAPI', 'AWS EC2', 'CI/CD', 'SQL'],
+      link: 'https://github.com/gopinathsjsu/team-project-2024849-mindbogglers',
     },
-    {
-      year: '2023',
-      title: 'Meeting Room Booking System',
-      description: 'Developed a full-stack web application for managing room reservations using Java, enabling CRUD functionality and improving efficiency for room allocation at work places. • Implemented a secure authentication system and ensured smooth user experience by using RESTful APIs.',
-      technologies: ['Java', 'SQL', 'HTML/XML', 'CSS', 'MVC Framework'],
-      link: 'https://github.com/AishlyManglani/meeting-room-booking-system'
-
-    },
-    // {
-    //   year: '2023',
-    //   title: 'NYCE',
-    //   description: 'Engineered a distinctive e-commerce online auction platform tailored to a specialized niche market. Led the end-to-end design process, integrating webhooks for live auction price updates and implementing cloud-based solutions using AWS stack for enhanced scalability.',
-    //   technologies: ['React', 'Python', 'AWS'],
-    //   image: nyceImg,
-    //   link: 'https://nycanx.com/'
-    // },
   ];
 
   return (
     <div id="projects" className="projects-container">
       <div className="projects-header">
         <Link to="/allProjects" className="view-all-link">
-          View All
+          View All Projects <span className="arrow-icon">→</span>
         </Link>
       </div>
 
@@ -64,15 +45,14 @@ const Projects = () => {
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="blog-post-link"
+              className={`blog-post-link ${project.highlight ? 'featured-project' : ''}`}
             >
               <div className="blog-post-content">
-                {/* <div className="blog-image-container">
-                  <img src={project.image} alt={project.title} className="blog-image" />
-                </div> */}
-
                 <div className="blog-details">
-                  <p className="blog-year">{project.year}</p>
+                  <div className="project-meta">
+                    <p className="blog-year">{project.year}</p>
+                    {project.highlight && <span className="featured-badge">Featured</span>}
+                  </div>
                   <h3 className="blog-title">
                     {project.title}
                     <span className="arrow-icon">↗</span>
